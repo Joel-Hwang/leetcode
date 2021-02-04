@@ -37,7 +37,6 @@ if(strs.length == 0) return "";
         }
         return result;
 
-
 100%
 if (strs == null || strs.length == 0) return "";
     for (int i = 0; i < strs[0].length() ; i++){
@@ -49,11 +48,8 @@ if (strs == null || strs.length == 0) return "";
     }
     return strs[0];
 
-
-
-
 100%
- if(strs == null || strs.length == 0)    return "";
+if(strs == null || strs.length == 0)    return "";
     String pre = strs[0];
     int i = 1;
     while(i < strs.length){
@@ -62,6 +58,5 @@ if (strs == null || strs.length == 0) return "";
         i++;
     }
     return pre;
-
 
 */
