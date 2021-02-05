@@ -24,12 +24,7 @@ public class ThreeSum {
             while(l<r){
                 int sum = nums[i];
                 if(nums[l] + nums[r] + sum == 0){
-                    List<Integer> rowRslt = new ArrayList<Integer>();
-                    rowRslt.add(nums[l]);
-                    rowRslt.add(nums[r]);
-                    rowRslt.add(sum);
-                    result.add(rowRslt);
-                    
+                    result.add(Arrays.asList(nums[l], nums[r], sum));
                     while(l<r&&nums[l] == nums[l+1]) l++;
                     while(l<r&&nums[r] == nums[r-1]) r--;
                     l++;r--;
