@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class ThreeSumClosest {
     public int threeSumClosest(int[] nums, int target) {
         int diff = nums[0] +  nums[1] +  nums[2];

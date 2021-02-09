@@ -40,8 +40,6 @@ public class AdjacentDupl {
         return res.toString();
     }
 
-    }
-
     // While문 제거로 최적화(insert 함수 대신 append) ( 12ms,39.4MB )
 
     public String removeDuplicates3(String S) {
