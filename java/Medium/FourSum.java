@@ -1,5 +1,11 @@
+package Medium;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class FourSum {
-    public ForSum(){}
+    public FourSum(){}
     public List<List<Integer>> fourSum(int[] nums, int target) {
         
         Arrays.sort(nums);

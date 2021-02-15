@@ -1,3 +1,4 @@
+package Medium;
 public class ReverseInteger {
     public ReverseInteger() {
         // System.out.println(reverse(123));
