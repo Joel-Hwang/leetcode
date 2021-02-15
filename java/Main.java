@@ -1,7 +1,9 @@
-import Easy.MakeParenthesesValid;
+import Medium.*;
+import Easy.*;
+import Hard.*;
 
 public class Main {
     public static void main(String[] args) {
-        new MakeParenthesesValid();
+        new MergeTwoList();
     }
 }
