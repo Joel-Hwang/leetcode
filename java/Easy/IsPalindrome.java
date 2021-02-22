@@ -1,3 +1,5 @@
+package Easy;
+
 public class IsPalindrome {
     public boolean isPalindrome(int x) {
         String s = ""+x;

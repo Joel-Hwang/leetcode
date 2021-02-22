@@ -1,3 +1,4 @@
+package Medium;
 public class LongestPalindromic {
 
     public LongestPalindromic() {

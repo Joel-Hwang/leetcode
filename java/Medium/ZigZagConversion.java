@@ -1,3 +1,4 @@
+package Medium;
 public class ZigZagConversion {
     public ZigZagConversion(){
         //System.out.println(convert("PAYPALISHIRING",3));

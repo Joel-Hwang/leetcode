@@ -1,3 +1,4 @@
+package Hard;
 public class MedianOfTwoArrays {
 
     public MedianOfTwoArrays(){

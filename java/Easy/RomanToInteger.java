@@ -1,3 +1,4 @@
+package Easy;
 public class RomanToInteger {
     public RomanToInteger(){
         romanToInt("IV");
