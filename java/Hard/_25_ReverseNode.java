@@ -17,14 +17,16 @@ public class _25_ReverseNode {
         ListNode res = new ListNode(0);
         res.next = head;
         ListNode c = res;
+
+      while(isPossible(c,k)){
         ListNode ps = c.next;  //preserve start
         ListNode pe = c.next;  //preserve end
         ListNode f = pe.next; // it will be first node
         ListNode s = f.next; //suffix node
         
         c.next = f;
-        pe.next=s;
-        f.next=ps;
+        pe.next=s; 
+        f.next=ps;      
 
         for(int i=3;i<=k;i++){
           ps=c.next;
@@ -35,8 +37,20 @@ public class _25_ReverseNode {
           pe.next=s;
           f.next=ps;
         }
+        c = pe;
+      }
+        
 
         return res.next;
+    }
+
+    public boolean isPossible(ListNode node, int k){
+      ListNode last = node;
+      for(int i = 0; i<k; i++){
+        last = last.next;
+        if(last == null) return false;
+      }
+      return true;
     }
 
     

@@ -4,6 +4,6 @@ import Hard.*;
 
 public class Main {
     public static void main(String[] args) {
-        new _24_SwapNode();
+        new _25_ReverseNode();
     }
 }
