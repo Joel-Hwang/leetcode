@@ -4,6 +4,6 @@ import Hard.*;
 
 public class Main {
     public static void main(String[] args) {
-        new _26_RemoveDupl();
+        new _28_Strstr();
     }
 }
