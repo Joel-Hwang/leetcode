@@ -1,9 +1,18 @@
 import Medium.*;
+import CS.LinkedListNode;
+import CS.Node;
 import Easy.*;
 import Hard.*;
 
 public class Main {
     public static void main(String[] args) {
-        new _28_Strstr();
+        LinkedListNode ll = new LinkedListNode();
+        ll.append(1);
+        ll.append(2);
+        ll.append(3);
+        ll.append(4);
+        ll.append(5);
+        ll.delete(3);
+        ll.retrieve();
     }
 }
