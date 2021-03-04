@@ -1,5 +1,7 @@
 package CS;
 
+import java.util.HashMap;
+
 public class LinkedListNode {
     Node header;
 
@@ -43,5 +45,41 @@ public class LinkedListNode {
             n = n.next;
         }
         System.out.println(n.data); // last node
+    }
+
+    // Time,Space O(n),O(n)
+    public void removeDups(){
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        Node n = header;
+        while(n.next != null){
+            if(hm.get(n.next.data) == null){
+                hm.put(n.next.data, 0);
+                n = n.next;
+            }else{
+                n.next = n.next.next;
+            }
+        }
+    }
+
+    // TIme, Space O(n2), O(1)
+    public void removeDups2(){
+        Node n = header.next;
+        while(n!= null && n.next != null){
+            Node r = n;
+            while(r.next != null){
+                if(n.data == r.next.data){
+                    r.next = r.next.next;
+                }else{
+                    r = r.next;
+                }
+            }
+            n = n.next;
+
+        }
+    }
+
+    //전체 노드 카운트 후 처음부터 count-key+1로 다시
+    public Node kthLast(Node first, int key){
+        return null;
     }
 }

@@ -10,9 +10,11 @@ public class Main {
         ll.append(1);
         ll.append(2);
         ll.append(3);
+        ll.append(3);
         ll.append(4);
         ll.append(5);
-        ll.delete(3);
+        ll.retrieve();
+        ll.removeDups2();
         ll.retrieve();
     }
 }
