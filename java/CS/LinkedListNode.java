@@ -3,15 +3,16 @@ package CS;
 import java.util.HashMap;
 
 public class LinkedListNode {
-    Node header;
+    public Node header;
 
-    static class Node {
+    public static class Node {
         int data;
         Node next;
         public Node(){}
         public Node(int d){
             this.data = d;
         }
+        public int getData(){ return data;}
     }
 
     public LinkedListNode() {
@@ -80,6 +81,19 @@ public class LinkedListNode {
 
     //전체 노드 카운트 후 처음부터 count-key+1로 다시
     public Node kthLast(Node first, int key){
-        return null;
+
+        Node n = new Node();
+        n.next = first;
+        int cnt = 0;
+        while(n.next != null){
+            cnt++;
+            n = n.next;
+        }
+
+        n.next = first;
+        for(int i = 0; i<cnt-key; i++){
+            n = n.next;
+        }
+        return n;
     }
 }
