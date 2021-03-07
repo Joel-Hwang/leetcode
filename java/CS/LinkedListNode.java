@@ -90,7 +90,8 @@ public class LinkedListNode {
             cnt++;
             n = n.next;
         }
-
+        
+        n = new Node();
         n.next = first;
         for(int i = 0; i<cnt-key; i++){
             n = n.next;
@@ -99,19 +100,21 @@ public class LinkedListNode {
     }
 
     public Node kthLast2(Node first, int key){
+        return kthLast2(first.next,key,new Reference(0));
+    }
 
-        Node n = new Node();
-        n.next = first;
-        int cnt = 0;
-        while(n.next != null){
-            cnt++;
-            n = n.next;
-        }
+    private Node kthLast2(Node n, int k, Reference r){
+        if(n == null ) return null;
+        Node found = kthLast2(n.next, k, r);
+        r.count++;
+        if(r.count == k) return n;
+        return found;
+    }
 
-        n.next = first;
-        for(int i = 0; i<cnt-key; i++){
-            n = n.next;
+    static class Reference{
+        int count;
+        Reference(int count){
+            this.count = count;
         }
-        return n;
     }
 }
