@@ -80,7 +80,25 @@ public class LinkedListNode {
     }
 
     //전체 노드 카운트 후 처음부터 count-key+1로 다시
+    //Time, Space O(n2), O(1)
     public Node kthLast(Node first, int key){
+
+        Node n = new Node();
+        n.next = first;
+        int cnt = 0;
+        while(n.next != null){
+            cnt++;
+            n = n.next;
+        }
+
+        n.next = first;
+        for(int i = 0; i<cnt-key; i++){
+            n = n.next;
+        }
+        return n;
+    }
+
+    public Node kthLast2(Node first, int key){
 
         Node n = new Node();
         n.next = first;
