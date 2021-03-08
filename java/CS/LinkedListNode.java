@@ -111,6 +111,22 @@ public class LinkedListNode {
         return found;
     }
 
+    public Node kthLast3(Node first, int key){
+        Node c = first;
+        Node nth = first;
+        for(int i = 0; i<key; i++){
+            nth = nth.next;
+        }
+
+        while(c.next!= null){
+            if(nth == null) break;
+            c = c.next;
+            nth = nth.next;
+        }
+
+        return c;
+    }
+
     static class Reference{
         int count;
         Reference(int count){

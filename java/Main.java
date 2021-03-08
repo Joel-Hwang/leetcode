@@ -14,6 +14,7 @@ public class Main {
         ll.append(5);
         ll.retrieve();
         //System.out.println(ll.kthLast(ll.header,2).getData());
-        System.out.println(ll.kthLast2(ll.header,2).getData());
+        //System.out.println(ll.kthLast2(ll.header,2).getData());
+        System.out.println(ll.kthLast3(ll.header,4).getData());
     }
 }
