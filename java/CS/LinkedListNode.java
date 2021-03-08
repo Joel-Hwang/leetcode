@@ -6,13 +6,20 @@ public class LinkedListNode {
     public Node header;
 
     public static class Node {
-        int data;
-        Node next;
+        public int data;
+        public Node next;
         public Node(){}
         public Node(int d){
             this.data = d;
         }
         public int getData(){ return data;}
+    }
+
+    static class Reference{
+        int count;
+        Reference(int count){
+            this.count = count;
+        }
     }
 
     public LinkedListNode() {
@@ -127,10 +134,11 @@ public class LinkedListNode {
         return c;
     }
 
-    static class Reference{
-        int count;
-        Reference(int count){
-            this.count = count;
-        }
+    public void deleteNode(Node n){
+        Node next = n.next;
+        n.data = next.data;
+        n.next = next.next;
     }
+
+    
 }
