@@ -175,4 +175,20 @@ public class LinkedListNode {
         return res.next;
     }
 
+    public Node addReverse2(Node l1, Node l2, int c){
+        if(l1 == null && l2 == null && c == 0) return null;
+        int value = c;
+        if(l1 != null){
+            value += l1.data;
+        }
+        if(l2 != null){
+            value += l2.data;
+        }
+        
+        Node result = new Node(value%10);
+        result.next = addReverse2(l1==null?null:l1.next, l2==null?null:l2.next, value/10);
+
+        return result;
+    }
+
 }

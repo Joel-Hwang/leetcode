@@ -15,10 +15,9 @@ public class Main {
         
         LinkedListNode.Node l2 = new LinkedListNode.Node(6);
         l2.next = new LinkedListNode.Node(4);
-        l2.next.next = new LinkedListNode.Node(3);
 
 
-        lln.addReverse(l1, l2);
+        lln.addReverse2(l1, l2,0);
     }
     
 }
