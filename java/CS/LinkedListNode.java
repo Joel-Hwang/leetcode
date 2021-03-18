@@ -165,30 +165,64 @@ public class LinkedListNode {
         }
 
         String c = "" + (Integer.parseInt(a) + Integer.parseInt(b));
-        
-        Node res = new Node( );
+
+        Node res = new Node();
         Node cRes = res;
-        for(int i = c.length()-1; i>=0; i--){
-            cRes.next = new Node(Integer.parseInt(c.charAt(i)+""));
+        for (int i = c.length() - 1; i >= 0; i--) {
+            cRes.next = new Node(Integer.parseInt(c.charAt(i) + ""));
             cRes = cRes.next;
         }
         return res.next;
     }
 
-    public Node addReverse2(Node l1, Node l2, int c){
-        if(l1 == null && l2 == null && c == 0) return null;
+    public Node addReverse2(Node l1, Node l2, int c) {
+        if (l1 == null && l2 == null && c == 0)
+            return null;
         int value = c;
-        if(l1 != null){
+        if (l1 != null) {
             value += l1.data;
         }
-        if(l2 != null){
+        if (l2 != null) {
             value += l2.data;
         }
-        
-        Node result = new Node(value%10);
-        result.next = addReverse2(l1==null?null:l1.next, l2==null?null:l2.next, value/10);
+
+        Node result = new Node(value % 10);
+        result.next = addReverse2(l1 == null ? null : l1.next, l2 == null ? null : l2.next, value / 10);
 
         return result;
+    }
+
+    public Node findCross(Node l1, Node l2){
+        int lenL1 = 0, lenL2 = 0;
+        Node cL1 = l1;
+        Node cL2 = l2;
+        while(cL1 != null){
+            lenL1++;
+            cL1 = cL1.next;
+        }
+
+        while(cL2 != null){
+            lenL2++;
+            cL2 = cL2.next;
+        }
+
+        cL1 = l1;
+        cL2 = l2;
+        for(int i = 0; i<Math.abs(lenL1 - lenL2); i++){
+            if(lenL1 > lenL2){
+                cL1 = cL1.next;
+            }else{
+                cL2 = cL2.next;
+            }
+        }
+
+        while(cL1 != null && cL2 != null){
+            if(cL1 == cL2) return cL1;
+            cL1 = cL1.next;
+            cL2 = cL2.next;
+        }
+        
+        return null;
     }
 
 }
