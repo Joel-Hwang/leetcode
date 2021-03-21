@@ -1,6 +1,6 @@
 package Hard;
 
-public class RegMatch {
+public class _10_RegMatch {
 
 
     public boolean isMatch(String s, String p) {
