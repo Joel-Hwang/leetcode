@@ -6,7 +6,7 @@ import Hard.*;
 
 public class Main {
     public static void main(String[] args) {
-        new _30_SubstringWithConcatenationOfAllWords();
+        new _31_next_permutation();
     }
 
 }
