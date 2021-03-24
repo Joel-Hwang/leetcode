@@ -6,7 +6,7 @@ import Hard.*;
 
 public class Main {
     public static void main(String[] args) {
-        new _31_next_permutation();
+        new _378_Kth_Smallest_Element_Sorted_Matrix();
     }
 
 }
