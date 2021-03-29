@@ -34,44 +34,92 @@ All the rows and columns of matrix are guaranteed to be sorted in non-degreasing
     */
     
     public _378_Kth_Smallest_Element_Sorted_Matrix(){
-      int[][] test = {{1,2},{1,3}};
+     // int[][] test = {{1,2},{1,3}};
+      int[][] test = {{1,3,5},{6,7,12},{11,14,14}};
 
-      System.out.println(kthSmallest(test,2));
+      //System.out.println(kthSmallest(test,3));
+      System.out.println(kthSmallest(test,3));
         
     }
 
     public int kthSmallest(int[][] matrix, int k) {
-        LinkedList<Integer> lstMatrix = new LinkedList<>();
-        for(int i = 0; i<matrix[0].length; i++){
-            lstMatrix.add(matrix[0][i]);
-        }
-
-        for(int i = 1; i<matrix.length; i++){
-            int prevIdx = i-1;
-            for(int j = 0; j<matrix[i].length; j++){
-                int idx = getIdx(lstMatrix,prevIdx,matrix[i][j]);
-                lstMatrix.add(idx,matrix[i][j]);
-                prevIdx = idx;
+        int lo = matrix[0][0];
+        int hi = matrix[matrix.length-1][matrix.length-1]+1;
+        while(lo<hi){
+            int mid = (lo+hi)/2;
+            int cnt = getLowerCnt(matrix,mid,k);
+            if(cnt>k){
+                hi = mid;
+            }else{
+                lo = mid;
             }
         }
-        return lstMatrix.get(k-1);
+        return lo;        
     }
 
-    private int getIdx(List<Integer> list, int start, int k){
-        int l = start;
-        int r = list.size();
-        while(l<r){
-            int mid = (l+r)/2;
-            if(mid == l){
-                return mid+1;
+    private int getLowerCnt(int[][] matrix, int pMid, int k){
+        int cnt = 0;
+        for(int i = 0; i<matrix.length; i++){
+            int[] row = matrix[i];
+            if(row[0] > pMid) break;
+            int l = 0;
+            int r = row.length-1;
+            
+            while(l<r){
+                int mid = (l+r)/2;
+                if(l+1 == r){
+                    cnt += row[r]<pMid?r+1:l+1;
+                    break;
+                }
+                
+                if(row[mid] > pMid){
+                    r = mid;
+                }else if(row[mid] < pMid){
+                    l = mid;
+                }else{
+                    cnt+=mid;
+                    break;
+                }
             }
-
-            if(list.get(mid) > k ){
-                r = mid;
-            }else{
-                l = mid;
-            }
+            if(cnt > k) break;
         }
-        return (l+r)/2;
+        return cnt;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public int kthSmallest2(int[][] matrix, int k) {
+        int lo = matrix[0][0], hi = matrix[matrix.length - 1][matrix[0].length - 1] + 1;//[lo, hi)
+        while(lo < hi) {
+            int mid = lo + (hi - lo) / 2;  // => (lo+hi)/2
+            int count = 0,  j = matrix[0].length - 1;
+            for(int i = 0; i < matrix.length; i++) {
+                while(j >= 0 && matrix[i][j] > mid) j--;
+                count += (j + 1);
+            }
+            if(count < k) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
     }
 }
