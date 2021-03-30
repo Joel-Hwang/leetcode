@@ -34,27 +34,28 @@ All the rows and columns of matrix are guaranteed to be sorted in non-degreasing
     */
     
     public _378_Kth_Smallest_Element_Sorted_Matrix(){
-     // int[][] test = {{1,2},{1,3}};
-      int[][] test = {{1,3,5},{6,7,12},{11,14,14}};
-
-      //System.out.println(kthSmallest(test,3));
-      System.out.println(kthSmallest(test,3));
+      //13
+      System.out.println(kthSmallest(new int[][]{{1,5,9},{10,11,13},{12,13,15}},8));
+      //2
+      System.out.println(kthSmallest(new int[][]{{1,2},{1,3}},3));
+      //-5
+      System.out.println(kthSmallest(new int[][]{{-5}},1));
         
     }
 
     public int kthSmallest(int[][] matrix, int k) {
         int lo = matrix[0][0];
-        int hi = matrix[matrix.length-1][matrix.length-1]+1;
+        int hi = matrix[matrix.length-1][matrix.length-1];
         while(lo<hi){
             int mid = (lo+hi)/2;
             int cnt = getLowerCnt(matrix,mid,k);
             if(cnt>k){
-                hi = mid;
+                hi = mid-1;
             }else{
-                lo = mid;
+                lo = mid+1;
             }
         }
-        return lo;        
+         return lo;        
     }
 
     private int getLowerCnt(int[][] matrix, int pMid, int k){
@@ -67,20 +68,13 @@ All the rows and columns of matrix are guaranteed to be sorted in non-degreasing
             
             while(l<r){
                 int mid = (l+r)/2;
-                if(l+1 == r){
-                    cnt += row[r]<pMid?r+1:l+1;
-                    break;
-                }
-                
-                if(row[mid] > pMid){
-                    r = mid;
-                }else if(row[mid] < pMid){
-                    l = mid;
-                }else{
-                    cnt+=mid;
-                    break;
+                if(row[mid] >= pMid){
+                    r = mid-1;
+                }else/* if(row[mid] < pMid)*/{
+                    l = mid+1;
                 }
             }
+            cnt += (row[l]<pMid?l+1:l);
             if(cnt > k) break;
         }
         return cnt;
