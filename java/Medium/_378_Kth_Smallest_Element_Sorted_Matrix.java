@@ -69,7 +69,7 @@ public class _378_Kth_Smallest_Element_Sorted_Matrix {
         // 13
         System.out.println(kthSmallest(new int[][] { { 1, 5, 9 }, { 10, 11, 13 }, { 12, 13, 15 } }, 8));
         // 2
-        System.out.println(kthSmallest2(new int[][] { { 1, 2 }, { 1, 3 } }, 3));
+        System.out.println(kthSmallest(new int[][] { { 1, 2 }, { 1, 3 } }, 3));
         // -5
         System.out.println(kthSmallest(new int[][] { { -5 } }, 1));
         System.out.println(kthSmallest(new int[][] { { 1, 5, 8 }, { 10, 12, 13 }, { 15, 17, 19 } }, 9));
@@ -79,13 +79,13 @@ public class _378_Kth_Smallest_Element_Sorted_Matrix {
     public int kthSmallest(int[][] matrix, int k) {
         int lo = matrix[0][0];
         int hi = matrix[matrix.length - 1][matrix.length - 1];
-        while (lo < hi) {
+        while (lo <= hi) {
             int mid = (lo + hi) / 2;
             int cnt = getLowerCnt(matrix, mid, k);
-            if (cnt > k) {
-                hi = mid - 1;
-            } else {
+            if (cnt < k) {
                 lo = mid + 1;
+            } else {
+                hi = mid-1;
             }
         }
         return lo;
@@ -97,20 +97,13 @@ public class _378_Kth_Smallest_Element_Sorted_Matrix {
             int[] row = matrix[i];
             if (row[0] > pMid)
                 break;
-            int l = 0;
-            int r = row.length - 1;
-
-            while (l < r) {
-                int mid = (l + r) / 2;
-                if (row[mid] >= pMid) {
-                    r = mid - 1;
-                } else/* if(row[mid] < pMid) */ {
-                    l = mid + 1;
+            for(int j = 0; j<row.length; j++){
+                if(row[j]<=pMid){
+                    cnt++;
+                }else{
+                    break;
                 }
             }
-            cnt += (row[l] < pMid ? l + 1 : l);
-            if (cnt > k)
-                break;
         }
         return cnt;
     }
