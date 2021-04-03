@@ -1,4 +1,5 @@
 package Medium;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,19 +41,22 @@ public class PhoneNumber {
 }
 
 /*
-
-        LinkedList<String> ans = new LinkedList<String>();
-        if (digits.isEmpty())
-            return ans;
-        String[] mapping = new String[] { "0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
-        ans.add("");
-        while (ans.peek().length() != digits.length()) {
-            String remove = ans.remove();
-            String map = mapping[digits.charAt(remove.length()) - '0'];
-            for (char c : map.toCharArray()) {
-                ans.addLast(remove + c);
-            }
-        }
-        return ans;
-
-*/ 
+ * 
+ * LinkedList<String> ans = new LinkedList<String>(); if (digits.isEmpty())
+ * return ans; String[] mapping = new String[] { "0", "1", "abc", "def", "ghi",
+ * "jkl", "mno", "pqrs", "tuv", "wxyz" }; ans.add(""); while
+ * (ans.peek().length() != digits.length()) { String remove = ans.remove();
+ * String map = mapping[digits.charAt(remove.length()) - '0']; for (char c :
+ * map.toCharArray()) { ans.addLast(remove + c); } } return ans;
+ * 
+ * 
+ * 
+ * public List<String> letterCombinations(String digits) { LinkedList<String>
+ * queue = new LinkedList<>(); if("".equals(digits)) return queue; String[]
+ * matrix = {"","","abc","def","ghi","jkl","mno","qprs","tuv","wxyz"}; char[]
+ * ardigit = digits.toCharArray(); queue.add(""); for(int j = 0;
+ * j<ardigit.length;j++){ char c = ardigit[j]; String m = matrix[c-'0'];
+ * while(queue.getFirst().length() == j){ String q = queue.removeFirst();
+ * for(int i=0; i<m.length(); i++){ queue.add(q+m.substring(i, i+1)); } } }
+ * return queue; }
+ */

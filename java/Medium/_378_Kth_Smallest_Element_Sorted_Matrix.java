@@ -96,6 +96,7 @@ public class _378_Kth_Smallest_Element_Sorted_Matrix {
         for (int i = 0; i < matrix.length; i++) {
             int[] row = matrix[i];
             if (row[0] > pMid)
+            
                 break;
             for(int j = 0; j<row.length; j++){
                 if(row[j]<=pMid){
