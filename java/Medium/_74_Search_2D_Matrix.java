@@ -17,7 +17,6 @@ public class _74_Search_2D_Matrix {
         int n = matrix[0].length;
         while(l<=r){
             int mid = (l+r)/2;
-            System.out.println(l+", "+matrix[mid/n][mid%n]+", "+r );
             if( matrix[mid/n][mid%n] == target ) return true;
             else if(matrix[mid/n][mid%n] > target){
                 r = mid-1;
