@@ -9,6 +9,6 @@ import Hard.*;
 
 public class Main {
     public static void main(String[] args) {
-        new _218_The_Skyline_Problem();
+        new _101_Symmetric_Tree();
     }
 }
