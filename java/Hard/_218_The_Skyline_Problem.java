@@ -1,8 +1,11 @@
 package Hard;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /*
 A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Given the locations and heights of all the buildings, return the skyline formed by these buildings collectively.
@@ -51,10 +54,10 @@ Output: [[0,3],[5,0]]-
 public class _218_The_Skyline_Problem {
 
     public _218_The_Skyline_Problem(){
-        List<List<Integer>> r1 = getSkyline(new int[][]{{2,9,10},{3,7,15},{5,12,12},{15,20,10},{19,24,8}});
+        List<int[]> r1 = getSkyline2(new int[][]{{2,9,10},{3,7,15},{5,12,12},{15,20,10},{19,24,8}});
         List<List<Integer>> r2 = getSkyline(new int[][]{{0,2,3},{1,5,3}});
         List<List<Integer>> r3 = getSkyline(new int[][]{{1,2,1},{1,2,2},{1,2,3}});
-        printList(r1);
+       // printList(r1);
         printList(r2);
         printList(r3);
     
@@ -117,7 +120,7 @@ public class _218_The_Skyline_Problem {
                 m.add(setList(b[r],0));
                 
             }
-            //addToRes(res,b[l],m);
+            addToRes(res,b[l],m);
             p=b;
             printList(m);
         }
@@ -125,7 +128,7 @@ public class _218_The_Skyline_Problem {
         //m을 순환하면서 새로운 마크보다 밑에 있는 애들은 지워야 함
         //m을 순환하는 시간이 걸리니까 res에 l보다 작은거 꾸준히 넣으면서 시작
 
-        return m;
+        return res;
     }
     public List<Integer> setList(int x, int y){
         List<Integer> res = new LinkedList<>();
@@ -142,5 +145,37 @@ public class _218_The_Skyline_Problem {
                 break;
             }
         }
+    }
+
+
+
+    public List<int[]> getSkyline2(int[][] buildings) {
+        List<int[]> result = new ArrayList<>();
+        List<int[]> height = new ArrayList<>();
+        for(int[] b:buildings) {
+            height.add(new int[]{b[0], -b[2]});
+            height.add(new int[]{b[1], b[2]});
+        }
+        Collections.sort(height, (a, b) -> {
+                if(a[0] != b[0]) 
+                    return a[0] - b[0];
+                return a[1] - b[1];
+        });
+        Queue<Integer> pq = new PriorityQueue<>((a, b) -> (b - a));
+        pq.offer(0);
+        int prev = 0;
+        for(int[] h:height) {
+            if(h[1] < 0) {
+                pq.offer(-h[1]);
+            } else {
+                pq.remove(h[1]);
+            }
+            int cur = pq.peek();
+            if(prev != cur) {
+                result.add(new int[]{h[0], cur});
+                prev = cur;
+            }
+        }
+        return result;
     }
 }
