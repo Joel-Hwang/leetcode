@@ -1,14 +1,12 @@
-import Medium.*;
+import Medium._55_JumpGame;
 
-import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        _55_JumpGame test = new _55_JumpGame();
+        
 
-import CS.LinkedListNode;
-import CS.Node;
-import Easy.*;
-import Hard.*;
-
-public class Main {
-    public static void main(String[] args) {
-        new _101_Symmetric_Tree();
     }
+    
+    
+    
 }
