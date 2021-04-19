@@ -1,8 +1,8 @@
-import Easy._693_BinaryNumberWithAlternatingBits;
+import Medium._838_PushDominoes;
 
 public class Main{
     public static void main(String[] args) {
-        new _693_BinaryNumberWithAlternatingBits();
+        new _838_PushDominoes();
     }
     
 }
