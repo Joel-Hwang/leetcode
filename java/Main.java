@@ -1,8 +1,8 @@
-import Hard._679_24Game;
+import Medium._33_SearchInRotatedSortedArray;
 
 public class Main{
     public static void main(String[] args) {
-        new _679_24Game();
+        new _33_SearchInRotatedSortedArray();
     }
     
 }
