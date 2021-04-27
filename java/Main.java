@@ -1,8 +1,8 @@
-import Medium._33_SearchInRotatedSortedArray;
+import Medium._34_FindFirstAndLastPositionElement;
 
 public class Main{
     public static void main(String[] args) {
-        new _33_SearchInRotatedSortedArray();
+        new _34_FindFirstAndLastPositionElement();
     }
     
 }
