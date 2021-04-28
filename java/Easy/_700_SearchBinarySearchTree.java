@@ -19,6 +19,15 @@ public class _700_SearchBinarySearchTree{
 
     // BFS logN 찾아서 서브트리 리턴
     public TreeNode searchBST(TreeNode root, int val) {
+        TreeNode cur = root;
+        while(cur != null){
+            if(cur.val == val) return cur;
+            if(cur.val < val){
+                cur = cur.right;
+            }else{
+                cur = cur.left;
+            }
+        }
         return null;
     }
 }
