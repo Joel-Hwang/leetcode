@@ -1,7 +1,7 @@
-
-import Easy._700_SearchBinarySearchTree;
+import Hard._1074_NumberSubmatricesSumTarget;
 
 public class Main{
     public static void main(String[] args) {
-        new _700_SearchBinarySearchTree();
+        new _1074_NumberSubmatricesSumTarget();
+    }
 }
