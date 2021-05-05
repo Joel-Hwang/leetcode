@@ -1,7 +1,7 @@
-import Hard._1074_NumberSubmatricesSumTarget;
+import Easy._617_MergeTwoBinaryTrees;
 
 public class Main{
     public static void main(String[] args) {
-        new _1074_NumberSubmatricesSumTarget();
+        new _617_MergeTwoBinaryTrees();
     }
 }
