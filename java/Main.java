@@ -1,7 +1,9 @@
-import Easy._617_MergeTwoBinaryTrees;
+import Easy.*;
+import Medium.*;
+import Hard.*;
 
 public class Main{
     public static void main(String[] args) {
-        new _617_MergeTwoBinaryTrees();
+        new _48_RotateImage();
     }
 }
