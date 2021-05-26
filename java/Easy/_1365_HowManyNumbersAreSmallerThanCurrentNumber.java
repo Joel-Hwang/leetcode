@@ -2,7 +2,6 @@ package Easy;
 
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,6 +54,7 @@ public class _1365_HowManyNumbersAreSmallerThanCurrentNumber {
 
     @Test
     public void test(){
+        System.out.println("Test");
         int[] nums = {8,1,2,2,3};
         assertArrayEquals(new int[]{4,0,1,1,3}, smallerNumbersThanCurrent(nums));
     }
