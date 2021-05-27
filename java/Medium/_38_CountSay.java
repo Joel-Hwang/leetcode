@@ -1,5 +1,9 @@
 package Medium;
 
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.testng.annotations.Test;
 
 public class _38_CountSay {
@@ -41,5 +45,7 @@ public class _38_CountSay {
         res = countAndSay(2);  //2
         res = countAndSay(3);  //2
         res = countAndSay(4);  //2
+        System.out.println(res);
+        assertTrue("1211".equals(res),"Messageddddd");
     }
 }
