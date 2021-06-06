@@ -17,25 +17,33 @@ public class _39_CombinationSum {
             }
         }
 
-        combination(cands,0,2,new ArrayList<Integer>(),target,res);
+        combination(cands,0,1,"",target,res);
+        combination(cands,0,2,"",target,res);
+        combination(cands,0,3,"",target,res);
+        combination(cands,0,4,"",target,res);
 
         return res;
     }
 
-    public void combination(List<Integer> ar,int start, int pick, List<Integer> parent,int target, List<List<Integer>> res){
+    public void combination(List<Integer> ar,int start, int pick, String parent,int target, List<List<Integer>> res){
         if( pick < 1){
             int sum = 0;
-            for(int v : parent){
-                sum +=v;
+            for(char c : parent.toCharArray()){
+                sum += (c-'0');
             }
             
-            if (sum == target) res.add(parent);
+            if (sum == target) {
+                List<Integer> a = new ArrayList();
+                for(char c : parent.toCharArray()){
+                    a.add(c-'0');
+                }
+                res.add(a);
+            }
             return;
         }
-
+       
         for(int i = start; i<ar.size()-(pick-1); i++){
-            parent.add(ar.get(i));
-            combination(ar,i+1, pick-1, parent, target, res);
+            combination(ar,i+1, pick-1, parent+ar.get(i), target, res);
         }
     }
 
