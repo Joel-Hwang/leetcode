@@ -1,5 +1,8 @@
 package CS;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 public class Permutation {
@@ -20,14 +23,37 @@ public class Permutation {
         }
     }
 
+    public void permutation2(int[] ar,int start, int pick, List<Integer> parent, List<List<Integer>> res){
+        if( pick < 1){
+            res.add(new ArrayList<>(parent));
+            return;
+        }
+
+        for(int i = start; i<ar.length; i++){
+            parent.add(ar[i]);
+            swap(ar,0,i);
+            permutation2(ar,start+1,pick-1,parent,res);
+            swap(ar,i,0);
+            parent.remove(parent.size()-1);
+        }
+    }
+
     public void swap(int[] ar, int a, int b){
         int temp = ar[a];
         ar[a] = ar[b];
         ar[b] = temp;
     }
-
+    
     @Test
     public void test(){
-        permutation(new int[]{2,3,6,7},0,3, "");
+        //permutation(new int[]{2,3,6,7},0,3, "");
+        List<List<Integer>> res = new ArrayList<>();
+        permutation2(new int[]{2,3,6,7},0,2, new ArrayList<Integer>(),res);
+        for(List<Integer> row : res){
+            for(int i : row){
+                System.out.print(i + ", ");
+            }
+            System.out.println();
+        }
     }
 }

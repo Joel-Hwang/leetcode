@@ -1,5 +1,8 @@
 package CS;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 public class Combination {
@@ -17,8 +20,29 @@ public class Combination {
         }
     }
 
+    public void combination2(int[] ar,int start, int pick, List<Integer> parent, List<List<Integer>> res){
+        if( pick < 1){
+            res.add(new ArrayList<>(parent));
+            return;
+        }
+        for(int i = start; i<ar.length-(pick-1); i++){
+            parent.add(ar[i]);
+            combination2(ar,i+1, pick-1, parent, res);
+            parent.remove(parent.size()-1);
+        }
+    }
+
     @Test
     public void test(){
-        combination(new int[]{2,3,6,7},0,2, "");
+        //combination(new int[]{2,3,6,7},0,2, "");
+
+        List<List<Integer>> res = new ArrayList<>();
+        combination2(new int[]{2,3,6,7}, 0, 3, new ArrayList<Integer>(), res);
+        for(List<Integer> row : res){
+            for(int i : row){
+                System.out.print(i + ", ");
+            }
+            System.out.println();
+        }
     }
 }
