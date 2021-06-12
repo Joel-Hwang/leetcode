@@ -6,29 +6,34 @@ import org.testng.annotations.Test;
 
 public class _43_MultiplyStrings {
     public String multiply(String num1, String num2) {
-        StringBuilder sb = new StringBuilder();
         char[] cn1 = num1.toCharArray();
         char[] cn2 = num2.toCharArray();
-        int i = cn1.length-1;
-        int j = cn2.length-1;
-        int div = 0;
-        while(i>=0 || j>=0){
-            int numI = (i<0?0:cn1[i--]-'0');
-            int numJ = (j<0?0:cn2[j--]-'0');
+        int res = 0;
+        for(int i = cn2.length-1,j=0; i>=0; i--,j++){
+            res += calc(cn1,cn2[i])*(int)Math.pow(10, j);
+        } 
 
-            int mul = numI*numJ;
+        return res+"";
+    }
+
+    public int calc(char[] cn, char c){
+        int res = 0;
+        int div = 0;
+        for(int i = cn.length-1,j=0; i>=0; i--,j++){
+            int mul = (cn[i]-'0')*(c-'0') + div;
             int remain = mul%10;
-            sb.insert(0, remain+div);
+            res = res + remain*(int)Math.pow(10, j);
             div = mul/10;
-            
         }
-        if(div>0)sb.insert(0, div);
-        return sb.toString();
+        if(div>0)res = res + div*(int)Math.pow(10, cn.length);
+        return res;
     }
 
     @Test
     public void test(){
-        //assertTrue("6".equals(multiply("2","3")));
+        
+        //System.out.println(calc(new char[]{'1','2','3'},'6'));
+        assertTrue("6".equals(multiply("2","3")));
         assertTrue("56088".equals(multiply("123","456")));
     }
 }
