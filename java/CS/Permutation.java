@@ -31,9 +31,9 @@ public class Permutation {
 
         for(int i = start; i<ar.length; i++){
             parent.add(ar[i]);
-            swap(ar,0,i);
+            swap(ar,parent.size()-1,i);
             permutation2(ar,start+1,pick-1,parent,res);
-            swap(ar,i,0);
+            swap(ar,i,parent.size()-1);
             parent.remove(parent.size()-1);
         }
     }
