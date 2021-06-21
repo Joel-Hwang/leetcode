@@ -17,9 +17,12 @@ public class Permutation {
         }
 
         for(int i = start; i<ar.length; i++){
-            swap(ar,0,i);
-            permutation(ar,start+1,pick-1,parent+ar[0]);
-            swap(ar,i,0);
+            String temp = parent;
+            parent = parent+ar[i];
+            swap(ar,parent.length()-1,i);
+            permutation(ar,start+1,pick-1,parent);
+            swap(ar,i,parent.length()-1);
+            parent = temp;
         }
     }
 
@@ -46,14 +49,14 @@ public class Permutation {
     
     @Test
     public void test(){
-        //permutation(new int[]{2,3,6,7},0,3, "");
-        List<List<Integer>> res = new ArrayList<>();
+        permutation(new int[]{1,2,3,4},0,4, "");
+        /*List<List<Integer>> res = new ArrayList<>();
         permutation2(new int[]{2,3,6,7},0,2, new ArrayList<Integer>(),res);
         for(List<Integer> row : res){
             for(int i : row){
                 System.out.print(i + ", ");
             }
             System.out.println();
-        }
+        }*/
     }
 }
