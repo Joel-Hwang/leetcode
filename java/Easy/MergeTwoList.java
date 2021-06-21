@@ -1,5 +1,7 @@
 package Easy;
 
+import CS.ListNode;
+
 public class MergeTwoList {
     public MergeTwoList() {
         ListNode l1 = new ListNode(1);
@@ -38,24 +40,6 @@ public class MergeTwoList {
 
         return res.next;
     }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
 }
 
 

@@ -1,4 +1,7 @@
 package Medium;
+
+import CS.ListNode;
+
 public class AddTwoNumbers {
     public AddTwoNumbers(){
         ListNode a = new ListNode(5);
@@ -78,19 +81,3 @@ public class AddTwoNumbers {
 }
 
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-}
