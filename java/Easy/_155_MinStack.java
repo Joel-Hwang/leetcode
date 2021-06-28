@@ -1,54 +1,77 @@
 package Easy;
 
-import java.util.LinkedList;
-
 import org.testng.annotations.Test;
 
 public class _155_MinStack {
     class MinStack {
-        LinkedList<Integer> ll;
+        Node head;
 
         /** initialize your data structure here. */
         public MinStack() {
-            ll = new LinkedList<>();
         }
 
         public void push(int val) {
-            ll.add(0, val);
+            Node nd = new Node(val);
+
+            if (head == null) {
+                head = nd;
+                head.min = val;
+            } else {
+                nd.next = head;
+                nd.min = Math.min(head.min, val);
+                head = nd;
+            }
         }
 
         public void pop() {
-            ll.remove(0);
+            head = head.next;
         }
 
         public int top() {
-            return ll.getFirst();
+            return head.val;
         }
 
         public int getMin() {
-            int min = Integer.MAX_VALUE;
-            for (int i : ll) {
-                if (i < min)
-                    min = i;
-            }
-            return min;
+            return head.min;
         }
+    }
+
+    class Node {
+        public int val;
+        public Node next;
+        public int min;
+
+        public Node() {
+        }
+
+        public Node(int d) {
+            this.val = d;
+        }
+
+        public Node(int d, int min, Node next) {
+            this.val = d;
+            this.min = min;
+            this.next = next;
+        }
+
     }
 
     @Test
     public void test() {
         MinStack minStack = new MinStack();
-        minStack.push(2);
+        minStack.push(-2);
         minStack.push(0);
-        minStack.push(3);
-        minStack.push(0);
-        minStack.getMin(); // return -3
-        minStack.pop();
-        minStack.getMin(); // return -3
-        minStack.pop();
+        minStack.push(-3);
         minStack.getMin(); // return -3
         minStack.pop();
         minStack.top(); // return 0
         minStack.getMin(); // return -2
+        /*
+         * MinStack minStack = new MinStack(); minStack.push(2); minStack.push(0);
+         * minStack.push(3); minStack.push(0); minStack.getMin(); // return -3
+         * minStack.pop(); minStack.getMin(); // return -3 minStack.pop();
+         * minStack.getMin(); // return -3 minStack.pop(); minStack.top(); // return 0
+         * minStack.getMin(); // return -2
+         */
     }
 }
