@@ -2,13 +2,14 @@ package Medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
 
 import org.testng.annotations.Test;
 
 public class _71_SimplyPath {
     public String simplifyPath(String path) {
         ArrayList<String> lstPath = new ArrayList<String>();
-        path = path.replaceAll("/+", "/");
         String[] arPath = path.split("/");
         for(String s : arPath){
             if("".equals(s)) continue;
@@ -29,6 +30,19 @@ public class _71_SimplyPath {
             sb.append(s);
         }
         return lstPath.size()==0?"/":sb.toString();
+    }
+
+    public String simplifyPath2(String path) {
+        Stack<String> stack = new Stack<>();
+        String[] p = path.split("/");
+        for (int i = 0; i < p.length; i++) {
+            if (!stack.empty() && p[i].equals(".."))
+                stack.pop();
+            else if (!p[i].equals(".") && !p[i].equals("") && !p[i].equals(".."))
+                stack.push(p[i]);
+        }
+        List<String> list = new ArrayList(stack);
+        return "/"+String.join("/", list);
     }
 
 
