@@ -1,16 +1,15 @@
 package Hard;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class _30_SubstringWithConcatenationOfAllWords {
     public _30_SubstringWithConcatenationOfAllWords(){
-        List<Integer> aa = findSubstring("lingmindraboofooowingdingbarrwingmonkeypoundcake",new String[]{"fooo","barr","wing","ding","wing"});
+        //List<Integer> aa = findSubstring("lingmindraboofooowingdingbarrwingmonkeypoundcake",new String[]{"fooo","barr","wing","ding","wing"});
     }
     public List<Integer> findSubstring(String s, String[] words) {
-        List<Integer> res = new LinkedList();
+        List<Integer> res = new LinkedList<>();
         Arrays.sort(words);
         int wordLen = words[0].length();
         int wordsFullLen = words.length*wordLen;

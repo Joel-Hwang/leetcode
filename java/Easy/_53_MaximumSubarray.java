@@ -2,7 +2,6 @@ package Easy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Arrays;
 
 import org.testng.annotations.Test;
 

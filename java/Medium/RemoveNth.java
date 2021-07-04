@@ -1,6 +1,8 @@
 package Medium;
 import java.util.ArrayList;
 
+import CS.ListNode;
+
 public class RemoveNth{
     public RemoveNth(){
         ListNode root = new ListNode(1);

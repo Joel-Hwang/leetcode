@@ -54,10 +54,8 @@ Output: [[0,3],[5,0]]-
 public class _218_The_Skyline_Problem {
 
     public _218_The_Skyline_Problem(){
-        List<int[]> r1 = getSkyline2(new int[][]{{2,9,10},{3,7,15},{5,12,12},{15,20,10},{19,24,8}});
         List<List<Integer>> r2 = getSkyline(new int[][]{{0,2,3},{1,5,3}});
         List<List<Integer>> r3 = getSkyline(new int[][]{{1,2,1},{1,2,2},{1,2,3}});
-       // printList(r1);
         printList(r2);
         printList(r3);
     

@@ -30,7 +30,7 @@ public class _25_ReverseNode {
 
         for(int i=3;i<=k;i++){
           ps=c.next;
-          pe=pe;
+          //pe=pe;
           f=s;
           s=s.next;
           c.next = f;

@@ -2,7 +2,6 @@ package Easy;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 import CS.TreeNode;
 
@@ -18,7 +17,7 @@ public class _617_MergeTwoBinaryTrees {
         r2.right = new TreeNode(3);
         r2.left.right = new TreeNode(4);
         r2.right.right = new TreeNode(7);
-        TreeNode rs = mergeTrees2(r1, r2);
+        //TreeNode rs = mergeTrees2(r1, r2);
     }
 
     public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {

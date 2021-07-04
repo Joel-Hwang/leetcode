@@ -5,13 +5,13 @@ public class MaximumTree {
     public MaximumTree(){
         Node _5 = new Node(5);
         Node _6 = new Node(6);
-        List _dep3 = new ArrayList<Node>();
+        List<Node> _dep3 = new ArrayList<Node>();
         _dep3.add(_5);
         _dep3.add(_6);
         Node _3 = new Node(3, _dep3);
         Node _2 = new Node(2);
         Node _4 = new Node(4);
-        List _dep2 = new ArrayList<Node>();
+        List<Node> _dep2 = new ArrayList<Node>();
         _dep2.add(_3);
         _dep2.add(_2);
         _dep2.add(_4);

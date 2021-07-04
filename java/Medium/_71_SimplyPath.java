@@ -1,7 +1,6 @@
 package Medium;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
@@ -41,7 +40,7 @@ public class _71_SimplyPath {
             else if (!p[i].equals(".") && !p[i].equals("") && !p[i].equals(".."))
                 stack.push(p[i]);
         }
-        List<String> list = new ArrayList(stack);
+        List<String> list = new ArrayList<>(stack);
         return "/"+String.join("/", list);
     }
 

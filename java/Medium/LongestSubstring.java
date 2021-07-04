@@ -33,7 +33,7 @@ public class LongestSubstring {
 
     public int lengthOfLongestSubstring2(String s) {
         int n = s.length();
-        Set<Character> set = new HashSet();
+        Set<Character> set = new HashSet<>();
         int ans = 0, i = 0, j = 0;
         while (i < n && j < n) {
             System.out.println(i+":"+j);

@@ -1,9 +1,5 @@
 package Medium;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 public class _378_Kth_Smallest_Element_Sorted_Matrix {
     /*
      * Given an n x n matrix where each of the rows and columns are sorted in

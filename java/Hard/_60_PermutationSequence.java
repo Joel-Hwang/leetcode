@@ -52,7 +52,6 @@ public class _60_PermutationSequence {
     }
 
     public String getPermutation2String(int n, int k) {
-        int pos = 0;
         List<Integer> numbers = new ArrayList<>();
         int[] factorial = new int[n+1];
         StringBuilder sb = new StringBuilder();
