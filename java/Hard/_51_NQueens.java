@@ -21,21 +21,20 @@ public class _51_NQueens {
             for (int i = 0; i < map.length; i++) {
                 StringBuilder sb = new StringBuilder();
                 for (int j = 0; j < map[i].length; j++) {
-                    sb.append(map[i][j]);
+                    sb.append("Q".equals(map[i][j])?"Q":".");
                 }
                 cs.add(sb.toString());
             }
             res.add(cs);
             return;
         }
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                if (setQ(map, i, j, ""+n)) {
-                    solve(map, n - 1, res);
-                    unset(map,i,j,""+n);
-                }
-                
+        
+        for (int j = 0; j < map.length; j++) {
+            if (setQ(map, n-1, j, ""+n)) {
+                solve(map, n - 1, res);
+                unset(map,n-1,j,""+n);
             }
+            
         }
     }
 
