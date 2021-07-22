@@ -3,7 +3,7 @@ package Medium;
 import org.testng.annotations.Test;
 
 public class _915_PartitionArrayintoDisjointIntervalsd {
-    public int partitionDisjoint(int[] nums) {
+    public int partitionDisjoint2(int[] nums) {
         int leftMax = nums[0];
         for(int i = 0; i<nums.length-1; i++){
             leftMax = Math.max(nums[i], leftMax);
@@ -19,6 +19,23 @@ public class _915_PartitionArrayintoDisjointIntervalsd {
             if(flag) return i+1;
         }
         return 1;
+    }
+
+    public int partitionDisjoint(int[] nums) {
+        int leftMax = nums[0];
+        int curMax = nums[0];
+        int res = 1;
+
+        for(int i = 0; i<nums.length; i++){
+            if(leftMax>nums[i]){
+                res = i+1;
+                leftMax = curMax;
+            }else{
+                curMax = Math.max(curMax, nums[i]);
+            }
+        }
+
+        return res;
     }
 
     @Test
