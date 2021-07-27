@@ -10,7 +10,7 @@ Output: []
 
 */
 
-import Easy._111_MinimumDepthBT.TreeNode;
+import CS.TreeNode;
 
 public class _700_SearchBinarySearchTree{
     public _700_SearchBinarySearchTree(){

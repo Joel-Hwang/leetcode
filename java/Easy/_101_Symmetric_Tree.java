@@ -3,6 +3,8 @@ package Easy;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import CS.TreeNode;
+
 public class _101_Symmetric_Tree {
     public _101_Symmetric_Tree(){
         TreeNode root = 
@@ -56,28 +58,3 @@ public class _101_Symmetric_Tree {
 }
 
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode() {}
-    TreeNode(int val) { this.val = val; }
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
-    }
-    TreeNode(Integer[] ar) {
-        Queue<TreeNode> q = new LinkedList<>();
-        this.val = ar[0];
-        q.add(this);
-        for(int i = 1; i<ar.length; i+=2){
-            TreeNode cur = q.poll();
-            if(cur == null) continue;
-            cur.left = (ar[i] ==null?null:new TreeNode(ar[i]));
-            cur.right = (ar[i+1] ==null?null:new TreeNode(ar[i+1]));
-            q.add(cur.left);
-            q.add(cur.right);
-        }
-    }
-}
