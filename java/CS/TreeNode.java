@@ -24,10 +24,13 @@ public class TreeNode {
                 q.add(null);
                 q.add(null);
                 continue;
-            } 
+            }
+
             cur.left = (ar[i] ==null?null:new TreeNode(ar[i]));
-            cur.right = (ar[i+1] ==null?null:new TreeNode(ar[i+1]));
             q.add(cur.left);
+            
+            if(i+1 >= ar.length) return;
+            cur.right = (ar[i+1] ==null?null:new TreeNode(ar[i+1]));
             q.add(cur.right);
         }
     }
