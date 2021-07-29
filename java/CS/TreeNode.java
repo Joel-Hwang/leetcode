@@ -20,7 +20,11 @@ public class TreeNode {
         q.add(this);
         for(int i = 1; i<ar.length; i+=2){
             TreeNode cur = q.poll();
-            if(cur == null) continue;
+            if(cur == null){
+                q.add(null);
+                q.add(null);
+                continue;
+            } 
             cur.left = (ar[i] ==null?null:new TreeNode(ar[i]));
             cur.right = (ar[i+1] ==null?null:new TreeNode(ar[i+1]));
             q.add(cur.left);
@@ -28,3 +32,4 @@ public class TreeNode {
         }
     }
 }
+// 4,3,null,2,null,null,null,1,null,null,null,null,null,5
