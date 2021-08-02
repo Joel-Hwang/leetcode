@@ -7,20 +7,13 @@ public class _409_LongestPalindrome {
         int res = 0;
         char[] arC = s.toCharArray();
         int[] az = new int[58];
-        boolean odd = false;
         for(char c : arC){
             az[c-'A']++;
         }
-
         for(int i : az){
-            if(i%2==0) res += i;
-            else{
-                res = res + (i-1);
-                odd = true;
-            } 
+            res += (i/2)*2;
         }
-
-        return odd?res+1:res;
+        return res == s.length()?res:res+1;
     } 
 
     @Test
