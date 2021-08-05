@@ -15,6 +15,7 @@ public class TreeNode {
         this.right = right;
     }
     public TreeNode(Integer[] ar) {
+        if(ar.length == 0) return;
         Queue<TreeNode> q = new LinkedList<>();
         this.val = ar[0];
         q.add(this);
