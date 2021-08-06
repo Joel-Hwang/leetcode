@@ -2,7 +2,7 @@ package CS;
 
 import java.util.List;
 
-class Node2 {
+public class Node2 {
     public int val;
     public List<Node2> children;
 
@@ -16,4 +16,4 @@ class Node2 {
         val = _val;
         children = _children;
     }
-};
+}
