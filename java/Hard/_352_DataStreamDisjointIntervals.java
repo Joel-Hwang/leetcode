@@ -12,7 +12,8 @@ public class _352_DataStreamDisjointIntervals {
             dt = new ArrayList<>();
         }
 
-        public void addNum(int val) {
+      /* Runtime: 85 ms, faster than 19.45%  
+      public void addNum(int val) {
             for (int i = 0; i < dt.size(); i++) {
                 if (dt.get(i) > val) {
                     dt.add(i, val);
@@ -22,6 +23,21 @@ public class _352_DataStreamDisjointIntervals {
                 }else;
             }
             dt.add(val);
+        }*/
+
+        public void addNum(int val) {
+            int l = 0, r = dt.size()-1;
+            while(l<=r){
+                int mid = (l+r)/2;
+                if(dt.get(mid) == val) return;
+                if(dt.get(mid) < val){
+                    l = mid+1;
+                }else{
+                    r = mid-1;
+                }
+            }
+
+            dt.add(l,val);
         }
 
         public int[][] getIntervals() {
