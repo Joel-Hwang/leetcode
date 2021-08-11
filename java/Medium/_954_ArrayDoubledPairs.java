@@ -16,7 +16,6 @@ public class _954_ArrayDoubledPairs {
 
         for(int key : freqMap.keySet()){
             if(freqMap.get(key) == 0) continue;
-            //if(freqMap.getOrDefault(key/2,0) == 0 && freqMap.getOrDefault(key*2,0)==0) return false;
             int cur = freqMap.get(key);
             if(freqMap.containsKey(key*2)){
                 int curMul2 = freqMap.getOrDefault(key*2,0);
