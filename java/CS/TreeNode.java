@@ -1,5 +1,6 @@
 package CS;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -35,5 +36,29 @@ public class TreeNode {
             q.add(cur.right);
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        Queue<TreeNode> q = new LinkedList();
+        q.add(this);
+        while(!q.isEmpty()){
+            int size = q.size();
+            for(int i = 0; i<size; i++){
+                TreeNode cur = q.poll();
+                if(cur == null) continue;
+                res.append(cur.val);
+                res.append(" ");
+                q.add(cur.left);
+                q.add(cur.right);
+            }
+            res.append("\n");
+        }
+
+        
+        return res.toString();
+    }
+
+    
 }
 // 4,3,null,2,null,null,null,1,null,null,null,null,null,5
