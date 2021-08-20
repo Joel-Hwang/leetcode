@@ -6,7 +6,7 @@ public class _706_DesignHashMap {
         int[] map = null;
         /** Initialize your data structure here. */
         public MyHashMap() {
-            map = new int[1000000];
+            map = new int[1000001];
         }
         
         /** value will always be non-negative. */
