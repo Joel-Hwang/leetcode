@@ -1,49 +1,33 @@
 package zContest;
 
-import java.util.Arrays;
 
 import org.testng.annotations.Test;
 
 public class _5852_MinimizetheDifferenceBetweenTargetChosenElements {
-    int min = Integer.MAX_VALUE;
+    int min;
+    boolean dp[][] ;
 
     public int minimizeTheDifference(int[][] mat, int target) {
         min = Integer.MAX_VALUE;
-        for(int i = 0; i<mat.length; i++){
-            Arrays.sort(mat[i]);
-        }
-        for (int j = 0; j < mat[0].length; j++) {
-            if(min == 0) return min;
-            //System.out.println("min:"+min + ", " +target+" : " + mat[0][j]);
-            dfs(mat, 0, target-mat[0][j]);
-        }
-
+        dp = new boolean[mat.length][50000];
+        rec(mat,0,0,target);
         return min;
     }
 
-    private int dfs(int[][] mat, int i, int p) {
-        if(min == 0) return 0;
-
-        if(p<0 && Math.abs(p) >= min) return -1;
-        
-        if (i + 1 >= mat.length){
-            if(p<0){
-                p = -p;
-                if(p>=min) return -1;
-            }
-            min = Math.min(min, p);
-            return 0;
+    public void rec(int[][] mat, int row, int sum, int target){
+        if(row>=mat.length){
+            min = Math.min(min, Math.abs(target-sum));
+            return;
         }
 
-        for (int idx = 0; idx < mat[0].length; idx++) {
-           // System.out.println("min:"+min + ", " +p+" : " + mat[i+1][idx]);
-            int a = dfs(mat, i + 1, p-mat[i+1][idx]);
-            if(a == -1) break;
+        if(dp[row][sum]) return;
+        for(int i = 0; i<mat[row].length; i++){
+            rec(mat,row+1,sum+mat[row][i],target);
         }
-
-        return 0;
-
+        dp[row][sum] = true;
     }
+
+   
 
     @Test
     public void test() {
