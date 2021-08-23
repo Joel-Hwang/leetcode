@@ -1,6 +1,7 @@
 package Medium;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -8,7 +9,7 @@ import java.util.HashMap;
 import org.testng.annotations.Test;
 
 public class _1647_MinimumDeletionsMakeCharacterFrequenciesUnique {
-    public int minDeletions(String s) {
+    public int minDeletions2(String s) {
         int res = 0;
         char[] cs = s.toCharArray();
         HashMap<Character, Integer> map = new HashMap<>();
@@ -52,6 +53,27 @@ public class _1647_MinimumDeletionsMakeCharacterFrequenciesUnique {
             this.c = c;
             this.cnt = cnt;
         }
+    }
+
+    public int minDeletions(String s) {
+        int res = 0;
+        int[] freq = new int[26];
+        for(int i = 0; i<s.length(); i++){
+            freq[s.charAt(i)-'a']++;
+        }
+        Arrays.sort(freq);
+        for(int i = 24; i>=0; i--){
+            if(freq[i] == 0) break;
+            if(freq[i+1] <= freq[i]){
+                res = res + freq[i] - freq[i+1] + 1;
+                freq[i] = freq[i+1] -1;
+                if(freq[i]<0){
+                    res = res + freq[i];
+                    freq[i] = 0;
+                }
+            }
+        }
+        return res;
     }
 
     @Test
