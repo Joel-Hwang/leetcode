@@ -78,6 +78,7 @@ public class _1647_MinimumDeletionsMakeCharacterFrequenciesUnique {
 
     @Test
     public void test() {
+
         System.out.println(minDeletions("bbcebab"));
         System.out.println(minDeletions("abcabc"));
         System.out.println(minDeletions("aab"));
