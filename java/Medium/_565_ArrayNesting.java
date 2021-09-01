@@ -4,7 +4,7 @@ package Medium;
 import org.testng.annotations.Test;
 
 public class _565_ArrayNesting {
-    public int arrayNesting(int[] nums) {
+    public int arrayNesting2(int[] nums) {
         int res = 0;
         
         boolean[] visited = new boolean[nums.length];
@@ -23,6 +23,21 @@ public class _565_ArrayNesting {
             curIdx = nums[curIdx];
             visited[curIdx] = true;
             res++;
+        }
+        return res;
+    }
+
+    public int arrayNesting(int[] A){
+        int res = 0, n = A.length;
+        boolean[] seen = new boolean[n];
+        for(int v: A){
+            int cnt = 0;
+            while(!seen[v]){
+                seen[v] = true;
+                cnt++;
+                v = A[v];
+            }
+            res = Math.max(res,cnt);
         }
         return res;
     }
