@@ -1,6 +1,5 @@
 package Medium;
 
-import java.util.HashSet;
 
 import org.testng.annotations.Test;
 
@@ -8,22 +7,21 @@ public class _565_ArrayNesting {
     public int arrayNesting(int[] nums) {
         int res = 0;
         
-        HashSet<Integer> doneIdx = new HashSet<>();
-        
+        boolean[] visited = new boolean[nums.length];
         for(int i = 0; i<nums.length; i++){
-            if(doneIdx.contains(i)) continue;
-            res = Math.max(res,getNestLength(nums,i,doneIdx));
+            if(visited[i]) continue;
+            res = Math.max(res,getNestLength(nums,i,visited));
         }
         return res;
     }
 
-    private int getNestLength(int[] nums,int i,HashSet<Integer> doneIdx){
+    private int getNestLength(int[] nums,int i,boolean[] visited){
         int curIdx = i;
         int res = 1;
-        doneIdx.add(curIdx);
+        visited[curIdx] = true;
         while(i != nums[curIdx]){
             curIdx = nums[curIdx];
-            doneIdx.add(curIdx);
+            visited[curIdx] = true;
             res++;
         }
         return res;
