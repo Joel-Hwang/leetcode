@@ -7,26 +7,28 @@ public class _84_LargestRectangleinHistogram {
         int res = 0;
         int[] left = new int[heights.length];
         int[] right = new int[heights.length];
-
+        //left[0] = -1;
+        //right[right.length-1] = -1;
         for(int l = 0, r = heights.length-1; l<heights.length && r>=0; l++,r--){
             int c = l-1;
             int d = r+1;
-            if(c>=0 && heights[c] >= heights[l]){
-                left[l] = left[c];
-            }else{
-                left[l] = l;
+            while(c>=0 && heights[c] >= heights[l]){
+                c = left[c];
             }
+            left[l] = c;
 
-            if(d<heights.length && heights[d] >= heights[r]){
-                right[r] = right[d];
-            }else{
-                right[r] = r;
+            while(d<heights.length && heights[d] >= heights[r]){
+                d = right[d];
             }
+            right[r] = d;
+            
+
         }
 
 
         for(int i = 0; i<heights.length; i++){
-            res = Math.max(res,heights[i]*(right[i]-left[i]+1));
+            //res = Math.max(res,heights[i]*((right[i]-1)-(left[i]+1)+1));
+            res = Math.max(res,heights[i]*(right[i]-left[i]-1));
         }
 
         return res;
@@ -59,11 +61,11 @@ public class _84_LargestRectangleinHistogram {
 
     @Test
     public void test(){
-        System.out.println(largestRectangleArea(new int[]{4,2,0,3,2,4,3,4}));
         System.out.println(largestRectangleArea(new int[]{9,9}));
         System.out.println(largestRectangleArea(new int[]{0,1,0,1}));
         System.out.println(largestRectangleArea(new int[]{0,9}));
         System.out.println(largestRectangleArea(new int[]{2,1,5,6,2,3}));
+        System.out.println(largestRectangleArea(new int[]{4,2,0,3,2,4,3,4}));
     }
 }
 /*
