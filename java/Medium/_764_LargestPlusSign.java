@@ -16,6 +16,16 @@ public class _764_LargestPlusSign {
         }
 
         for (int i = 0; i < N; i++) {
+            for (int j = 0, k=N-1, t=0,r=0,b=0,l = 0; j < N; j++, k--) {
+                dp[i][j] = Math.min(dp[i][j], l = (dp[i][j] == 0 ? 0 : l + 1));
+                dp[i][k] = Math.min(dp[i][k], r = (dp[i][k] == 0 ? 0 : r + 1));
+                dp[j][i] = Math.min(dp[j][i], b = (dp[j][i] == 0 ? 0 : b + 1));
+                dp[k][i] = Math.min(dp[k][i], t = (dp[k][i] == 0 ? 0 : t + 1));
+            }
+        }
+
+        /*
+        for (int i = 0; i < N; i++) {
             for (int j = 0, l = 0; j < N; j++) {
                 dp[i][j] = Math.min(dp[i][j], l = (dp[i][j] == 0 ? 0 : l + 1));
             }
@@ -30,7 +40,7 @@ public class _764_LargestPlusSign {
                 dp[k][i] = Math.min(dp[k][i], t = (dp[k][i] == 0 ? 0 : t + 1));
             }
         }
-
+        */
         int res = 0;
         for(int i = 0; i<N; i++){
             for(int j = 0; j<N; j++){
