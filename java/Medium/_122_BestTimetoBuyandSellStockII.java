@@ -3,7 +3,7 @@ package Medium;
 import org.testng.annotations.Test;
 
 public class _122_BestTimetoBuyandSellStockII {
-    public int maxProfit(int[] prices) {
+    public int maxProfit2(int[] prices) {
 
         int buy = -prices[0], sell = 0;
         for (int p : prices) {
@@ -55,8 +55,25 @@ public class _122_BestTimetoBuyandSellStockII {
     sell : 현재이익(3) + 물건값(4) => 7
     //5번째까지 사고 팔았던 최대 이익이 7원이고 6번째에서 사고 바로 팔아버려도 7원
     */
+
+    public int maxProfit(int[] prices) {
+        //
+        //1, 7, 2, 3, 6, 7, 6, 7
+        //1에사서 7에 팔고 , 확정
+        //2에 사서 3에 팔고 3에 사서 6에 팔고 6에 사서 7에 팔면 5원
+        //2에 사서 6에 팔고 6에 사서 7에 팔아도 5원
+        //2에 사서 7에 팔아도 5원. 즉 이득 볼때마다 더하면 다 똑같다.
+        int res = 0;
+        for (int i = 1; i<prices.length; i++) {
+            if(prices[i]> prices[i-1]) //팔 가치가 있으면
+                res += prices[i]-prices[i-1];
+        }
+
+        return res;
+    }
     @Test
     public void test(){
+        System.out.println(maxProfit(new int[]{1, 7, 2, 3, 6, 7, 6, 7}));
         System.out.println(maxProfit(new int[]{7,1,5,3,6,4}));
         System.out.println(maxProfit(new int[]{1,2,3,4,5}));
         System.out.println(maxProfit(new int[]{7,6,4,3,1}));
