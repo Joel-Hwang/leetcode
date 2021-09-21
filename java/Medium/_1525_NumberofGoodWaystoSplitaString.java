@@ -45,7 +45,7 @@ public class _1525_NumberofGoodWaystoSplitaString {
 
     private int getCnt(String s){
         char[] arC = s.toCharArray();
-        Set set = new HashSet<>();
+        Set<Character> set = new HashSet<>();
         for(char c : arC)
             set.add(c);
         return set.size();
