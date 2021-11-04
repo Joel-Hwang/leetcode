@@ -5,7 +5,6 @@ import CS.TreeNode;
 public class _404_SumofLeftLeaves {
     public int sumOfLeftLeaves(TreeNode root) {
         if(root == null ) return 0;
-        if(root.left == null && root.right == null) return 0;
         return rec(root.left,true) + rec(root.right,false);
     }
 
