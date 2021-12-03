@@ -38,8 +38,9 @@ def sort(words):
     cnt = len(words) # list size (cnt stands for count)
     j = 0
     while j < cnt:
+        min = words[0]
         for i in range(0, len(words)):
-            min = find_min(words[0], words[i])
+            min = find_min(min, words[i])
         words.remove(min)
         sorted.append(min)
         j +=1
@@ -60,5 +61,5 @@ def rotated(lst, n):
         lst_new = lst
     return lst_new
 
-words = ['e' , 'd' , 'c' , 'b' , 'a' ]
+words = [' bat ', ' cat ', ' a ',' dog ', ' fish ']
 print(sort(words))
