@@ -62,16 +62,61 @@ public class _1622_FancySequence {
             return 0;
         }
     }
-
-    class Data {
-        char op;
-        int number;
-
-        public Data(char op, int number) {
-            this.op = op;
-            this.number = number;
-        }
+ /*
+ 
+ class Fancy {
+    private static final int MOD = 1000000007;
+    private int[] values = new int[8];
+    private long add = 0;                       //addend
+    private long mult = 1;                      //multiplier
+    private long r_mult = 1;                    //multiplicative inverse
+    private int size = 0;                       //append times
+    private static int[] INVERSES = cache();    //multiplicative inverse cache
+    
+    public void append(int val) {
+        //To prevent negative numbers from appearing in the numerator, add MOD to val-add
+        long result = (val - add + MOD) * r_mult % MOD;
+        //Expand if the array is full
+        if (size >= values.length)
+            values = Arrays.copyOf(values, size + (size << 1));
+        values[size++] = ((int) result);
     }
+    public void addAll(int inc) {
+        add = (add + inc) % MOD;
+    }
+    public void multAll(int m) {
+        mult = mult * m % MOD;
+        add = add * m % MOD;
+        //Update multiplicative inverse:
+        //Multiplicative inverse element is multiplicative,so r_mult = r_mult * INVERSES[m] % MOD
+        //According to the test, there m <= 100, so the multiplicative inverse element in the interval [0-100] can be stored in the table and used directly
+        //If m is not limited, then r_mult = multiplicativeInverse(m, MOD) % MOD
+        r_mult = r_mult * INVERSES[m] % MOD;
+    }
+    public int getIndex(int idx) {
+        if (idx >= size) return -1;
+        return (int) ((mult * values[idx] + add) % MOD);
+    }
+    // Calculate the inverse element
+    // 1/a % p = a^(p-2) % p
+    static int multiplicativeInverse(int x, int mod) {
+        long y = 1, m = mod - 2, p = x;
+        //Similar to the fast exponentiation operation, if the modulus is taken for each step of the judgment, it is a fast exponentiation modular operation.
+        for (int i = 0; 1L << i < m; i++, p = p * p % mod)
+            if ((m >> i & 1) == 1) y = y * p % mod;
+        return (int) y;
+    }
+    static int[] cache() {
+        INVERSES = new int[101];
+        INVERSES[0] = 0;
+        INVERSES[1] = 1;
+        for (int i = 2; i < INVERSES.length; i++) 
+            INVERSES[i] = multiplicativeInverse(i, MOD);
+        return INVERSES;
+    }
+}
+ 
+ */
 
     @Test
     public void test() {
