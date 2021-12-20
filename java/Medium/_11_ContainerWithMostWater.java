@@ -1,6 +1,6 @@
 package Medium;
-public class MostWater {
-    public MostWater(){
+public class _11_ContainerWithMostWater {
+    public _11_ContainerWithMostWater(){
         System.out.println(maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
         System.out.println(maxArea(new int[]{1,1}));
         System.out.println(maxArea(new int[]{4,3,2,1,4}));
