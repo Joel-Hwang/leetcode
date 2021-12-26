@@ -1,12 +1,12 @@
 package Medium;
 
 import java.util.ArrayList;
-
+import java.util.Stack;
 
 import org.testng.annotations.Test;
 
 public class _227_BasicCalculatorII {
-    public int calculate(String s) {
+    public int calculate2(String s) {
         s = s.replaceAll(" ", "");
         s = s.startsWith("-")?s:"+"+s;
         ArrayList<String> elems = new ArrayList<>();
@@ -45,12 +45,50 @@ public class _227_BasicCalculatorII {
         return res;
     }
 
+    public int calculate(String s) {
+        s = s.replaceAll(" ", "");
+        s = s.startsWith("-")?s:"+"+s;
+
+        int res = 0;
+        int cur = 0;
+        char op = '+';
+        Stack<Integer> stk = new Stack<>();
+        for(int i = 0; i<s.length(); i++){
+            if(Character.isDigit(s.charAt(i))){
+                cur = cur*10+(s.charAt(i)-'0');
+            }
+    
+            if(!Character.isDigit(s.charAt(i)) || i == s.length()-1){
+
+                if(op == '+'){
+                    stk.push(cur);
+                }else if(op == '-'){
+                    stk.push(-cur);
+                }else if(op == '*'){
+                    stk.push(stk.pop()*cur);
+                }else{
+                    stk.push(stk.pop()/cur);
+                }
+                cur = 0;
+                op = s.charAt(i);
+            }
+        }
+
+        while(!stk.empty()){
+            res += stk.pop();
+        }
+
+        return res;
+    }
+
+
 
     @Test
     public void test(){
+        System.out.println(calculate("0-21483647"));
+        System.out.println(calculate("3/2"));
         System.out.println(calculate("2*3*4"));
         System.out.println(calculate("3+2*2"));
-        System.out.println(calculate("3/2"));
         System.out.println(calculate("3+5/2"));
     }
 }
