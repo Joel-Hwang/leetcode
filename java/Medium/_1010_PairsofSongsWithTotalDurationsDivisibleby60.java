@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class _1010_PairsofSongsWithTotalDurationsDivisibleby60 {
     HashMap<Integer, Integer> map = new HashMap<>();
-    public int numPairsDivisibleBy60(int[] time) {
+    public int numPairsDivisibleBy602(int[] time) {
         for(int i : time){
             map.put(i%60, map.getOrDefault(i%60, 0) + 1);
         }
@@ -29,6 +29,26 @@ public class _1010_PairsofSongsWithTotalDurationsDivisibleby60 {
     private int permutation2(int n){
         int cnt = map.getOrDefault(n,0);
         return cnt*(cnt-1)/2;
+    }
+
+    public int numPairsDivisibleBy60(int[] time) {
+        int[] map = new int[60];
+        for(int i : time){
+            map[i%60]++;
+        }
+
+        int res = 0;
+        for(int i = 0; i<=30; i++){
+            if(i==0||i==30){
+                res += map[i]*(map[i]-1)/2;
+            }else{
+                res += map[i]*map[60-i];
+            }
+
+        }
+
+        return res;
+        
     }
 
 
