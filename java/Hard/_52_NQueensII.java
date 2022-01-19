@@ -76,17 +76,38 @@ public class _52_NQueensII {
     
     /**
     
-    (Note: This problem is an easier duplicate to the previous problem, 51: N-Queens, except that it doesn't require us to return the actual boards, just the count.)
+    (Note: This problem is an easier duplicate to the previous problem, 51: N-Queens, 
+    except that it doesn't require us to return the actual boards, just the count.)
 
-A naive approach here would attempt every possible combination of locations, but there are (N^2)! / (N^2 - N)! different combinations, which is up to ~1e17 when N = 9. Instead, we need to make sure we only attempt to place queens where it's feasible to do so, based on the instructions. This would seem to call for a depth first search (DFS) approach with a recursive helper function (place), so that we only pursue workable combinations without wasting time on known dead-ends.
+A naive approach here would attempt every possible combination of locations, 
+but there are (N^2)! / (N^2 - N)! different combinations, 
+which is up to ~1e17 when N = 9. 
+Instead, we need to make sure we only attempt to place queens 
+where it's feasible to do so, based on the instructions. 
+This would seem to call for a depth first search (DFS) approach with a recursive helper function (place), 
+so that we only pursue workable combinations without wasting time on known dead-ends.
 
-First, we should consider how the queens will be placed. Since each row can only have one queen, our basic process will be to place a queen and then recurse to the next row. On each row, we'll have to iterate through the possible options, check the cell for validity, then place the queen on the board.
+First, we should consider how the queens will be placed. 
+Since each row can only have one queen, our basic process will be to place 
+a queen and then recurse to the next row. 
+On each row, we'll have to iterate through the possible options, 
+check the cell for validity, then place the queen on the board.
 
-Rather than store the whole board, we can save on space complexity if we only keep track of the different axes of attack in which a queen might be placed. Since a queen has four axes of attack, we'll need to check the three remaining axes (other than the horizontal row, which our iteration will naturally take care of) for validity.
+Rather than store the whole board, 
+we can save on space complexity if we only keep track of the different axes of attack 
+in which a queen might be placed. Since a queen has four axes of attack, 
+we'll need to check the three remaining axes 
+(other than the horizontal row, which our iteration will naturally take care of) for validity.
 
-There are N possible columns and 2 * N - 1 possible left-downward diagonals and right-downward diagonals. With a constraint of 1 <= N <= 9, each of the two diagonal states represents up to 17 bits' worth of data and the vertical state up to 9 bits, so we can use bit manipulation to store these states efficiently.
+There are N possible columns and 2 * N - 1 possible left-downward di agonals 
+and right-downward diagonals. 
+With a constraint of 1 <= N <= 9, each of the two diagonal states represents up to 17 bits' 
+worth of data and the vertical state up to 9 bits, 
+so we can use bit manipulation to store these states efficiently.
 
-So for each recursive call to place a queen, we should pass along the board state in the form of only three integers (vert, ldiag, rdiag). We can then use bitmasks to check for cell validity before attempting to recurse to the next row.
+So for each recursive call to place a queen, we should pass along the board state 
+in the form of only three integers (vert, ldiag, rdiag). 
+We can then use bitmasks to check for cell validity before attempting to recurse to the next row.
 
 If we successfully reach the end of the board without failing, we should increment our answer counter (ans).
 
