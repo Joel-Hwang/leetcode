@@ -21,6 +21,22 @@ public class _946_ValidateStackSequences {
         return true;
     }
 
+    public boolean validateStackSequences2(int[] pushed, int[] popped) {
+        int N = pushed.length;
+        Stack<Integer> stack = new Stack();
+
+        int j = 0;
+        for (int x: pushed) {
+            stack.push(x);
+            while (!stack.isEmpty() && j < N && stack.peek() == popped[j]) {
+                stack.pop();
+                j++;
+            }
+        }
+
+        return j == N;
+    }
+
     @Test
     public void test(){
         assertTrue(validateStackSequences(new int[]{1,2,3,4,5}, new int[]{4,5,3,2,1}));
