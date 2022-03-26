@@ -29,7 +29,7 @@ public class VendingMachine {
     public void buy(int price){
         balance = getBalance(price, balance);
         int[] coins = getCoins(balance);
-        System.out.println(Arrays.toString(coins) + "=>" + balance));
+        System.out.println(Arrays.toString(coins) + "=>" + balance);
     }
 
     @Test
