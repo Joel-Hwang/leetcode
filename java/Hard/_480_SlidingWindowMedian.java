@@ -2,7 +2,10 @@ package Hard;
 
 import java.util.Arrays;
 
+import org.testng.annotations.Test;
+
 public class _480_SlidingWindowMedian{
+
     public _480_SlidingWindowMedian(){
         int[] nums = {1,3,-1,-3,5,3,6,7};
         medianSlidingWindow2(nums, 3);
@@ -95,5 +98,10 @@ public class _480_SlidingWindowMedian{
         }
         return num;
             
+    }
+
+    @Test
+    public void test(){
+        medianSlidingWindow(null,0);
     }
 }
