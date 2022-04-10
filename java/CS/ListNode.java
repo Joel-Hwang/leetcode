@@ -33,4 +33,21 @@ public class ListNode {
         }
         System.out.println();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        // TODO Auto-generated method stub
+        ListNode tem1 = new ListNode();
+        tem1.next = this;
+        ListNode tem2 = new ListNode();
+        tem2.next = (ListNode)obj;
+        while(tem1.next!= null && tem2.next!= null){
+            if(tem1.next.val != tem2.next.val) return false;
+            tem1 = tem1.next;
+            tem2 = tem2.next;
+        }
+        //if(tem1.next == null  && tem2.next == null)
+        //    return true;
+        return tem1.next == null && tem2.next == null;
+    }
 }
