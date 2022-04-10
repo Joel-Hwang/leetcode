@@ -45,29 +45,23 @@ public class _703_KthLargestElementinaStream {
         public KthLargest2(int k, int[] nums) {
             this.k = k;
             heap = new PriorityQueue<>();
-            
-            for (int num: nums) {
-                heap.offer(num);
-            }
-            
-            while (heap.size() > k) {
+            for(int n : nums)
+                heap.offer(n);
+            while(heap.size()>k)
                 heap.poll();
-            }
         }
         
         public int add(int val) {
             heap.offer(val);
-            if (heap.size() > k) {
+            if(heap.size() > k)
                 heap.poll();
-            }
-    
             return heap.peek();
         }
     }
 
     @Test
     public void test(){
-        KthLargest ans = new KthLargest(3,new int[]{4,5,8,2});
+        KthLargest2 ans = new KthLargest2(3,new int[]{4,5,8,2});
         assertEquals(4, ans.add(3));
         assertEquals(5, ans.add(5));
         assertEquals(5, ans.add(10));
