@@ -20,6 +20,7 @@ public class _279_PerfectSquares{
 
     @Test
     public void test(){
+        System.out.println(numSquares(11));
         System.out.println(numSquares(2));
         System.out.println(numSquares(3));
         System.out.println(numSquares(4));
