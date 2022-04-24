@@ -8,14 +8,43 @@ import java.util.Set;
 import org.testng.annotations.Test;
 
 public class _778_SwiminRisingWater {
-    int curAnswer = Integer.MAX_VALUE;
-    public int swimInWater(int[][] grid) {
-        Set<Integer> set = new HashSet<Integer>();
-        set.add(grid[0][0]);
-        return dfs(set,grid,0,0, grid[0][0]);
+
+    public int swimInWater(int[][] grid){
+        int n = grid.length;
+        int l = grid[0][0];
+        int r = n*n-1;
+        while(l<r){
+            int m = (l+r)/2;
+            if(dfs(grid, 0, 0, m, new boolean[n][n])){
+                r = m;
+            }else{
+                l = m+1;
+            }
+        }
+        return l;
+    }
+    //T값을 최대값으로 봤을 때 0,0에서 마지막까지 도달할 수 있는지 보자
+    //도달했다면 T를 절반으로 줄여서 또 도달했는지 보자.
+    //절반으로 줄여서 도달 못했다면 T를 조금만 늘려서(1/2만큼) 도달하는지 보자. 
+    //계속 반복
+    private boolean dfs(int[][] grid, int i, int j, int T, boolean[][] visited){
+        int n = grid.length;
+        if(i< 0 || i>=n || j <0 || j>=n || visited[i][j] || grid[i][j] > T) return false;
+        visited[i][j] = true;
+        if(i == n-1 && j == n-1) return true;
+        return dfs(grid, i-1, j, T, visited) || dfs(grid, i+1, j, T, visited) || dfs(grid, i, j-1, T, visited) || dfs(grid, i, j+1, T, visited);
     }
 
-    private int dfs(Set<Integer> set, int[][] grid, int pI, int pJ, int maxVal){
+
+
+    int curAnswer = Integer.MAX_VALUE;
+    public int swimInWater2(int[][] grid) {
+        Set<Integer> set = new HashSet<Integer>();
+        set.add(grid[0][0]);
+        return dfs2(set,grid,0,0, grid[0][0]);
+    }
+
+    private int dfs2(Set<Integer> set, int[][] grid, int pI, int pJ, int maxVal){
         if(grid[pI][pJ] >= curAnswer) return -1;
         if(pI == grid.length-1 && pJ == grid.length-1){
             curAnswer = Math.min(curAnswer,maxVal);
@@ -32,28 +61,28 @@ public class _778_SwiminRisingWater {
             int val = grid[pI-1][pJ];
             set.add(val);
             int ownMax = Math.max(maxVal, val);
-            disT = dfs(set,grid,pI-1,pJ, ownMax);
+            disT = dfs2(set,grid,pI-1,pJ, ownMax);
             set.remove(val);
         }
         if(ableB){
             int val = grid[pI+1][pJ];
             set.add(val);
             int ownMax = Math.max(maxVal, val);
-            disB = dfs(set,grid,pI+1,pJ, ownMax);
+            disB = dfs2(set,grid,pI+1,pJ, ownMax);
             set.remove(val);
         }
         if(ableL){
             int val = grid[pI][pJ-1];
             set.add(val);
             int ownMax = Math.max(maxVal, val);
-            disL = dfs(set,grid,pI,pJ-1, ownMax);
+            disL = dfs2(set,grid,pI,pJ-1, ownMax);
             set.remove(val);
         }
         if(ableR){
             int val = grid[pI][pJ+1];
             set.add(val);
             int ownMax = Math.max(maxVal, val);
-            disR = dfs(set,grid,pI,pJ+1, ownMax);
+            disR = dfs2(set,grid,pI,pJ+1, ownMax);
             set.remove(val);
         }
 
