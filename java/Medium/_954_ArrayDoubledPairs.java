@@ -29,6 +29,7 @@ public class _954_ArrayDoubledPairs {
                 freqMap.put(key, diff>=0?diff:0);
                 freqMap.put(key/2, diff>=0?0:-diff);
             }
+            System.out.println("helloworld");
         }
 
 
