@@ -18,7 +18,7 @@ public class _2155_AllDivisionsWithTheHighestScoreOfBinaryArray {
             if(max == cur) res.add(i);
             if(cur > max){
                 max = cur;
-                res = new ArrayList<>();
+                res.clear();
                 res.add(i);
             }
         } 
