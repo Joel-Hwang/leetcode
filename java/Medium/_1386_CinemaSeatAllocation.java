@@ -1,24 +1,21 @@
 package Medium;
 import java.util.*;
 
-import javax.print.attribute.IntegerSyntax;
-
 import org.testng.annotations.Test;
 
 
 public class _1386_CinemaSeatAllocation{
     public int maxNumberOfFamilies(int n, int[][] reservedSeats) {
-        int res = 0;
         Map<Integer,Set<Integer>> map = new HashMap<>();
         for(int i = 0; i<reservedSeats.length; i++){
             Set<Integer> curSet = map.getOrDefault(reservedSeats[i][0], new HashSet<Integer>());
             curSet.add(reservedSeats[i][1]);
             map.putIfAbsent(reservedSeats[i][0], curSet);
         }
-
-        for(int i = 1; i<=n; i++){
-            res += getSeats(map.getOrDefault(i, new HashSet<Integer>()));
-        }
+        
+        int res = n*2;
+        for(int key : map.keySet())
+            res += getSeats(map.get(key))-2;
         return res;
     }
 
