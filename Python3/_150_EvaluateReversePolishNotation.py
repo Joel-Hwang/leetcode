@@ -11,13 +11,13 @@ class Solution:
         return stk[0]    
 
     def calcuate(self, operator:str, op2:int, op1:int) -> int:
-        if operator is '+':
+        if operator == '+':
             return op1 + op2
-        if operator is '-': 
+        if operator == '-': 
             return op1 - op2
-        if operator is '*': 
+        if operator == '*': 
             return op1 * op2
-        if operator is '/': 
+        if operator == '/': 
             return int(op1/op2)
         return 0
 
