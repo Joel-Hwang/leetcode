@@ -1,16 +1,18 @@
 package Hard;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.PriorityQueue;
 
 import org.testng.annotations.Test;
 
 public class _295_FindMedialFromDataStream {
-    class MedianFinder {
+    class MedianFinder2 {
         List<Integer> list;
 
         /** initialize your data structure here. */
-        public MedianFinder() {
+        public MedianFinder2() {
             list = new ArrayList();
         }
 
@@ -48,18 +50,45 @@ public class _295_FindMedialFromDataStream {
         }
     }
 
+    class MedianFinder {
+        PriorityQueue<Integer> left = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Integer> right = new PriorityQueue<>();
+        private boolean even = true;
+        /** initialize your data structure here. */
+        public MedianFinder() {
+        }
+
+        public void addNum(int num) {
+            if(even){
+                right.offer(num);
+                left.offer(right.poll());
+            }else{
+                left.offer(num);
+                right.offer(left.poll());
+            }
+            even = !even;
+        }
+
+        public double findMedian() {
+            if (even)
+                return (right.peek() + left.peek()) / 2.0;
+            else
+                return left.peek();
+        }
+    }
+
     @Test
     public void test() {
-        /*
+        
         MedianFinder medianFinder = new MedianFinder();
         medianFinder.addNum(1); // arr = [1]
         medianFinder.addNum(2); // arr = [1, 2]
         System.out.println(medianFinder.findMedian()); // return 1.5 (i.e., (1 + 2) / 2)
         medianFinder.addNum(3); // arr[1, 2, 3]
         System.out.println(medianFinder.findMedian()); // return 2.0
-*/
 
-        MedianFinder medianFinder = new MedianFinder();
+
+        medianFinder = new MedianFinder();
         medianFinder.addNum(6); // arr = [1]
         System.out.println(medianFinder.findMedian()); // return 1.5 (i.e., (1 + 2) / 2)
         medianFinder.addNum(10); // arr = [1, 2]
