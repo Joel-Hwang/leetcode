@@ -4,5 +4,7 @@ public class Main {
         System.out.println(5^3);
         System.out.println(6^3);
         System.out.println(6^5);
+        System.out.println(6^5);
+        System.out.println(6^5);
     }
 }
