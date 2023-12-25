@@ -1,13 +1,38 @@
 package Easy;
 
 import org.testng.annotations.Test;
+import java.util.*;
 
 public class _155_MinStack {
     class MinStack {
+        List<int[]> list = new LinkedList<>();
+        
+        /** initialize your data structure here. */
+        public MinStack() {
+        }
+
+        public void push(int val) {
+            int min = Math.min(list.size()>0?list.getFirst()[1]:Integer.MAX_VALUE, val);
+            list.add(0,new int[]{val,min});
+        }
+
+        public void pop() {
+            list.remove(0);
+        }
+
+        public int top() {
+            return list.getFirst()[0];
+        }
+
+        public int getMin() {
+            return list.getFirst()[1];
+        }
+    }
+    class MinStack2 {
         Node head;
 
         /** initialize your data structure here. */
-        public MinStack() {
+        public MinStack2() {
         }
 
         public void push(int val) {
