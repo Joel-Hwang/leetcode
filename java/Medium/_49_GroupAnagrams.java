@@ -10,7 +10,22 @@ import java.util.Map;
 import org.testng.annotations.Test;
 
 public class _49_GroupAnagrams {
-    public List<List<String>> groupAnagrams(String[] strs) {
+    public List<List<String>> groupAnagrams(String[] strs){
+        List<List<String>> result = new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
+        for(String s : strs){
+            char[] arS = s.toCharArray();
+            Arrays.sort(arS);
+            String key = new String(arS);
+            List<String> curList = map.getOrDefault(key, new ArrayList<>());
+            if(curList.isEmpty()) map.put(key, curList);
+            curList.add(s);
+        }
+        for(String key : map.keySet())
+            result.add(map.get(key));
+        return result;
+    }
+    public List<List<String>> groupAnagrams2(String[] strs) {
         List<List<String>> res = new ArrayList<>();
         Map<String,List<String>> m = new HashMap<>();
         for(String s : strs){
