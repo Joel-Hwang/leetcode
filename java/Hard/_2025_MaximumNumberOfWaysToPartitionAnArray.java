@@ -9,25 +9,25 @@ import org.testng.annotations.Test;
 
 public class _2025_MaximumNumberOfWaysToPartitionAnArray {
     public int waysToPartition(int[] nums, int k) {
-        Map<Integer, List<Integer>> map = new HashMap<>();
+        Map<Long, List<Integer>> map = new HashMap<>();
         int res = setDifferenceMap(nums,map);
+        
+        
         for(int i = 0; i<nums.length; i++){
-            int gap = k-nums[i];
+            long gap = k-nums[i];
+            
             List<Integer> afterChanged = map.getOrDefault(gap, new ArrayList<>());
             int curRes = 0;
-            boolean hasMe = false;
             for(int j = 0; j<afterChanged.size(); j++){
-                if(afterChanged.get(j)>i) curRes++;
-                if(afterChanged.get(j) == i) hasMe = true;
+                if(afterChanged.get(j)>=i) curRes++;
             }
-
+           
+            
             afterChanged = map.getOrDefault(-gap, new ArrayList<>());
             for(int j = 0; j<afterChanged.size(); j++){
                 if(afterChanged.get(j)<i) curRes++;
-                if(afterChanged.get(j) == i) hasMe = true;
             }
 
-            if(hasMe) curRes++;
             res = Math.max(res,curRes);
         }
         
@@ -40,10 +40,10 @@ public class _2025_MaximumNumberOfWaysToPartitionAnArray {
         return sum; 
     }
 
-    private int setDifferenceMap(int[] nums, Map<Integer, List<Integer>> map){
+    private int setDifferenceMap(int[] nums, Map<Long, List<Integer>> map){
         int sum = getSum(nums);
-        int leftSum = 0;
-        int rightSum = sum;
+        long leftSum = 0;
+        long rightSum = sum;
         int res = 0;
         for(int i = 0; i<nums.length-1; i++){
             leftSum += nums[i];
