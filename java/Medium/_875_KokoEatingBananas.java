@@ -1,12 +1,14 @@
 package Medium;
 
+import java.util.Arrays;
+
 import org.testng.annotations.Test;
 
 public class _875_KokoEatingBananas {
     public int minEatingSpeed(int[] piles, int h) {
         int l = 0, r = 0;
         for(int p : piles) r = Math.max(r,p);
-
+        
         while(l<r){
             int mid = l + (r-l)/2;
             int hour = getHour(piles, mid);
